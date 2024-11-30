@@ -1,14 +1,16 @@
-import { UserResolver } from './src/users/user.resolver';
+import { CreateUserInput } from './src/modules/users/dto/create-user.input';
+import { UserResolver } from './src/modules/users/user.resolver';
 
 export const resolvers = {
   Query: {
-    getAllUserDetails: () => UserResolver.getAllUserDetails(),
-    getUserDetailsById: (parent: any, args: any) => {
+    getAllUserDetails: (_: unknown, args: { pageNo: number; perPage: number; }) => UserResolver.getAllUserDetails(args?.pageNo, args?.perPage),
+    getUserDetailsById: (parent: any, args: {id: string}) => {
       return UserResolver.getUserDetailsById(args?.id);
     },
   },
   Mutation: {
+    createUser: (_: unknown, args: {createUserInput: CreateUserInput}) => UserResolver.createUser(args?.createUserInput),
     updateUserDetail: () => UserResolver.updateUserDetail(),
-    deleteUserDetail: () => UserResolver.deleteUserDetail(),
+    deleteUserDetail: (_: unknown, args: {id: string}) => UserResolver.deleteUserDetail(args?.id),
   },
 };
