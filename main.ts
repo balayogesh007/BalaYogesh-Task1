@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import "dotenv/config";
 import { DbConfig } from "./src/database/database-connection";
 import { context } from "./src/middleware/auth.middleware";
-
+import 'dotenv/config'
 
 async function bootStart() {
   //Check DB connection
@@ -29,8 +29,10 @@ async function bootStart() {
 
   expressApp.use(bodyParser.json());
 
+  const port = process.env.PORT ?? 4020;
+
   const { url } = await startStandaloneServer(serverConfig, {
-    listen: { port: 4000 },
+    listen: { port: port as number},
     context: context
   });
 

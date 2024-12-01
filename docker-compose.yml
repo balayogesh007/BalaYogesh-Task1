@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:18
+    container_name: sequelize-typescript
+    build:
+      context: .
+    working_dir: /sequelize-typescript
+    volumes:
+      - .:/sequelize-typescript
+      - /sequelize-typescript/node_modules
+    ports:
+      - "5000:5000" # Adjust this to match your app's exposed port
+    environment:
+      NODE_ENV: development
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: my_database
+    command: ["npm", "run", "start:dev"]
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: my_database
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
