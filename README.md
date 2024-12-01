@@ -8,10 +8,6 @@ npm install or npm i
 ```bash
 npm run start:dev
 ```
-##create a .env like below
-DB_HOST = localhost
-DB_USERNAME = postgres
-PORT = 4000
-DB_NAME = 'your-db-name'
-DB_PORT = 5432
-DB_PASSWORD = 'your-db-pass'
+## Postman Collection
+Added postman collection json in project main directory
+Check out the [Postman Documenttation](https://documenter.getpostman.com/view/38918032/2sAYBYfAaL)
