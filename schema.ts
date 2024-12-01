@@ -27,7 +27,8 @@ export const typeDefs = `
 
     type Query{
       getAllUserDetails(pageNo: Int!, perPage: Int!): [User],
-      getUserDetailsById(id: ID!): User
+      getUserDetailsById(id: ID!): User,
+      signIn(emailId: String!): String
     }
 
     type Mutation{

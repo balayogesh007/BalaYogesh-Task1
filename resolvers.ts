@@ -7,6 +7,7 @@ export const resolvers = {
     getUserDetailsById: (parent: any, args: {id: string}) => {
       return UserResolver.getUserDetailsById(args?.id);
     },
+    signIn: (_:unknown, args: {emailId: string}) => UserResolver.signIn(args?.emailId)
   },
   Mutation: {
     createUser: (_: unknown, args: {createUserInput: CreateUserInput}) => UserResolver.createUser(args?.createUserInput),

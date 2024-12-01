@@ -7,6 +7,9 @@ export const context = async ({ req }: any) => {
   if (req.body.operationName === 'IntrospectionQuery') {
     return {};
   }
+  if (req.body.operationName === 'SignIn') {
+    return {};
+  }
   const getBearerToken = req?.headers["authorization"];
   if (!getBearerToken) {
     throw new GraphQLError("Unauthorized", {

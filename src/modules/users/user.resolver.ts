@@ -8,6 +8,11 @@ export const UserResolver = {
     return userService.createUser(createUserInput);
   },
 
+  signIn: async(emailId: string) => {
+    const userService = new UserService();
+    return userService.signIn(emailId);
+  },
+
   getAllUserDetails: async (pageNo: number, perPage: number) => {
     const userService = new UserService();
     return userService.getAllUserDetails(pageNo, perPage);
