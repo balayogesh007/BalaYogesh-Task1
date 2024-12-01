@@ -6,5 +6,12 @@ npm install or npm i
 ```
 ##scripts
 ```bash
-npx nodemon main.ts
+npm run start:dev
 ```
+##create a .env like below
+DB_HOST = localhost
+DB_USERNAME = postgres
+PORT = 4000
+DB_NAME = 'your-db-name'
+DB_PORT = 5432
+DB_PASSWORD = 'your-db-pass'
